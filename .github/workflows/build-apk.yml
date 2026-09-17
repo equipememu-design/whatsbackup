@@ -15,27 +15,21 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Set up JDK 17
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '17'
         distribution: 'temurin'
 
     - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-      with:
-        packages: 'platform-tools'
-
-    - name: Accept Android SDK licenses
       run: |
-        yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --licenses || true
-
-    # AQUI ESTÁ A MÁGICA: Baixa o Gradle automaticamente
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3
+        SDKMANAGER="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+        yes | "$SDKMANAGER" --licenses >/dev/null || true
+        "$SDKMANAGER" "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
     - name: Build Debug APK
-      # Note que agora usamos 'gradle' direto, não './gradlew'
-      run: gradle assembleDebug --stacktrace
+      run: |
+        chmod +x ./gradlew
+        ./gradlew assembleDebug --stacktrace
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
