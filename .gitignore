@@ -1,0 +1,199 @@
+```
+# Android
+*.apk
+*.aar
+*.dex
+*.so
+*.jar
+
+# Gradle
+.gradle/
+build/
+intermediates/
+outputs/
+.externalNativeBuild
+.cxx/
+
+# Android Studio
+.idea/
+*.iml
+*.iws
+*.log
+local.properties
+
+# Generated files
+gen/
+generated/
+
+# Debug symbols
+*/debug/
+*/release/
+
+# Keystore
+*.keystore
+*.jks
+
+# Local configuration file (sdk path, etc)
+local.properties
+
+# Log Files
+*.log
+
+# Android Backup Folder
+*.aab
+
+# Coverage reports
+coverage/
+*.ec
+
+# Unit test reports
+test-results/
+*.xml
+
+# Proguard
+proguard/
+
+# Dexguard
+dexguard/
+
+# Firebase
+google-services.json
+
+# Compiled Kotlin files
+*.kotlin_metadata
+*.kotlin_builtins
+
+# Temporary folder for sync
+.sync/
+
+# Android device logs
+adb.log
+
+# Android lint
+lint-results*.xml
+
+# Navigation editor
+navigation-*.xml
+
+# Viewpager2 editor
+viewpager2-*.xml
+
+# Compose compiler reports
+compose_metrics/
+
+# Build cache
+.cache/
+
+# APK Analyzer
+.apk-analyzer/
+
+# Android Emulator
+*.avd/
+
+# Device state snapshots
+*.qcow2
+
+# Memory dumps
+*.hprof
+
+# Native libraries
+lib/
+
+# Resource cache
+res/raw/
+
+# Generated binding classes
+databinding/
+
+# View binding
+viewbinding/
+
+# Data binding
+.databinding/
+
+# Navigation
+.navigation/
+
+# ViewStub
+viewstub/
+
+# RenderScript
+renderscript/
+
+# Aidl
+aidl/
+
+# Renderscript
+rs/
+
+# Shaders
+shaders/
+
+# Assets
+assets/
+
+# Resources
+res/
+
+# Manifest
+AndroidManifest.xml
+
+# Proguard/R8
+.pro
+.proguard/
+
+# Crashlytics
+crashlytics/
+
+# Firebase Analytics
+firebase_analytics/
+
+# Google Analytics
+ga_
+
+# HockeyApp
+hockeyapp/
+
+# Fabric
+fabric/
+
+# Sentry
+sentry/
+
+# Bugsnag
+bugsnag/
+
+# New Relic
+newrelic/
+
+# AppDynamics
+appdynamics/
+
+# ComScore
+comscore/
+
+# Flurry
+flurry/
+
+# Mixpanel
+mixpanel/
+
+# Local files
+local.properties
+
+# Environment specific
+.env
+.env.local
+.env.*
+!*.env.example
+
+# IDE specific
+.vscode/
+*.swp
+*.swo
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+```

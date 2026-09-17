@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WhatsApp Backup Premium</string>
+    <string name="accessibility_service_description">Este serviço é usado para automatizar a exportação de conversas do WhatsApp. O serviço só fica ativo durante o processo de backup e não coleta dados pessoais. Suporta Modo Marathon para extração completa do histórico.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard de Saúde</string>
+    <string name="status_green">Tudo sincronizado</string>
+    <string name="status_yellow">Atenção necessária</string>
+    <string name="status_red">Falha crítica</string>
+    
+    <!-- Zona de Silêncio -->
+    <string name="incognito_mode">Modo Incógnito</string>
+    <string name="incognito_unlock">Toque para desbloquear com biometria</string>
+    
+    <!-- Grupos -->
+    <string name="groups_title">Gestão de Grupos</string>
+    <string name="include_backup">Incluir no Backup</string>
+    <string name="auto_cleanup">Limpeza Automática</string>
+    
+    <!-- Chat Simulator -->
+    <string name="chat_simulator">Visualizador de Conversas</string>
+    
+    <!-- Backup Validation -->
+    <string name="backup_validated">Backup Validado ✓</string>
+    <string name="backup_failed">Falha na Validação</string>
+    
+    <!-- Módulo A - Modo Marathon -->
+    <string name="marathon_mode">Modo Marathon</string>
+    <string name="marathon_description">Extrair histórico completo desde o início</string>
+    <string name="marathon_progress">Extração inicial: %1$d%% — resta aprox. %2$s</string>
+    <string name="marathon_checkpoint_saved">Checkpoint salvo - pode retomar depois</string>
+    <string name="marathon_complete">Histórico completo extraído!</string>
+    <string name="marathon_maintenance">Migrado para modo de manutenção (24h/48h)</string>
+    
+    <!-- Módulo B - Captura Anti-Truncamento -->
+    <string name="read_more_expanded">\"Ler mais\" expandido automaticamente</string>
+    <string name="message_integral">Corpo integral da mensagem preservado</string>
+    <string name="partial_history">Histórico parcial - continuar extração</string>
+    
+    <!-- Fila Priorizada -->
+    <string name="priority_high">Alta (Privados menores)</string>
+    <string name="priority_medium">Média (Privados maiores)</string>
+    <string name="priority_low">Baixa (Grupos gigantes)</string>
+    
+    <!-- Throttling -->
+    <string name="throttling_active">Otimizando velocidade para preservar bateria</string>
+</resources>
