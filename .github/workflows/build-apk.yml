@@ -14,18 +14,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Fix .gitignore to allow gradle-wrapper.jar
-      run: |
-        # Remove any rule that blocks *.jar or gradle-wrapper.jar
-        sed -i '/\.jar$/d' .gitignore
-        sed -i '/gradle-wrapper\.jar/d' .gitignore
-        # Add explicit exception for the wrapper jar
-        echo "!gradle/wrapper/gradle-wrapper.jar" >> .gitignore
-        git config user.name "github-actions"
-        git config user.email "actions@github.com"
-        git add .gitignore
-        git commit -m "fix: allow gradle-wrapper.jar in .gitignore" || true
-
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
@@ -39,27 +27,25 @@ jobs:
       run: |
         yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-    - name: Generate missing gradle-wrapper.jar
+    - name: Download and extract Gradle to get wrapper jar
       run: |
-        if [ ! -f "gradle/wrapper/gradle-wrapper.jar" ]; then
-          echo "gradle-wrapper.jar is missing! Generating it..."
-          # Download Gradle 8.7 directly and extract the wrapper jar
-          GRADLE_VERSION="8.7"
-          GRADLE_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
-          curl -L "$GRADLE_URL" -o /tmp/gradle.zip
-          unzip -q /tmp/gradle.zip -d /tmp/
-          cp /tmp/gradle-${GRADLE_VERSION}/lib/gradle-launcher-${GRADLE_VERSION}.jar gradle/wrapper/gradle-wrapper.jar
-          echo "gradle-wrapper.jar generated successfully!"
-        else
-          echo "gradle-wrapper.jar already exists."
-        fi
+        GRADLE_VERSION="8.7"
+        GRADLE_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+        echo "Downloading Gradle ${GRADLE_VERSION}..."
+        curl -L "$GRADLE_URL" -o /tmp/gradle.zip
+        echo "Extracting Gradle..."
+        unzip -q /tmp/gradle.zip -d /tmp/
+        echo "Copying gradle-wrapper.jar to project..."
+        mkdir -p gradle/wrapper
+        cp /tmp/gradle-${GRADLE_VERSION}/lib/gradle-launcher-${GRADLE_VERSION}.jar gradle/wrapper/gradle-wrapper.jar
+        echo "Wrapper jar created successfully!"
+        ls -la gradle/wrapper/
 
-    - name: Setup Gradle
-      uses: gradle/gradle-build-action@v3
+    - name: Grant execute permission for gradlew
+      run: chmod +x ./gradlew
 
     - name: Build Debug APK
-      # Use 'gradle' command directly, NOT './gradlew'
-      run: gradle assembleDebug --stacktrace
+      run: ./gradlew assembleDebug --stacktrace
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
@@ -67,4 +53,3 @@ jobs:
         name: whatsapp-backup-apk
         path: app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30
-
