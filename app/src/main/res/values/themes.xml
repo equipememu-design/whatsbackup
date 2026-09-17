@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Theme base para o aplicativo -->
+    <style name="Theme.WhatsAppBackupPremium" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/purple_500</item>
+        <item name="android:navigationBarColor">@color/purple_700</item>
+    </style>
+</resources>

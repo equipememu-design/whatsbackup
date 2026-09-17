@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WhatsApp Backup Premium</string>
+    <string name="accessibility_service_description">Este serviço é usado para automatizar a exportação de conversas do WhatsApp. O serviço só fica ativo durante o processo de backup e não coleta dados pessoais.</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Dashboard de Saúde</string>
+    <string name="status_green">Tudo sincronizado</string>
+    <string name="status_yellow">Atenção necessária</string>
+    <string name="status_red">Falha crítica</string>
+    
+    <!-- Zona de Silêncio -->
+    <string name="incognito_mode">Modo Incógnito</string>
+    <string name="incognito_unlock">Toque para desbloquear com biometria</string>
+    
+    <!-- Grupos -->
+    <string name="groups_title">Gestão de Grupos</string>
+    <string name="include_backup">Incluir no Backup</string>
+    <string name="auto_cleanup">Limpeza Automática</string>
+    
+    <!-- Chat Simulator -->
+    <string name="chat_simulator">Visualizador de Conversas</string>
+    
+    <!-- Backup Validation -->
+    <string name="backup_validated">Backup Validado ✓</string>
+    <string name="backup_failed">Falha na Validação</string>
+</resources>
