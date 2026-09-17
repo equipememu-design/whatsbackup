@@ -10,10 +10,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      ANDROID_HOME: /usr/local/lib/android/sdk
-      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -24,21 +20,20 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: Set up Android SDK
+    - name: Setup Android SDK
       uses: android-actions/setup-android@v3
-      with:
-        packages: 'platform-tools platforms;android-34 build-tools;34.0.0 cmdline-tools;latest'
 
     - name: Accept Android SDK licenses
       run: |
         yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-        yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
+    # AQUI ESTÁ A MÁGICA: Baixa o Gradle automaticamente
+    - name: Setup Gradle
+      uses: gradle/gradle-build-action@v3
 
     - name: Build Debug APK
-      run: ./gradlew assembleDebug
+      # Note que agora usamos 'gradle' direto, não './gradlew'
+      run: gradle assembleDebug --stacktrace
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4
@@ -46,7 +41,3 @@ jobs:
         name: whatsapp-backup-apk
         path: app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30
-
-env:
-  ANDROID_HOME: /usr/local/lib/android/sdk
-        java-version
