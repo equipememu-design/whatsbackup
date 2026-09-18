@@ -2,13 +2,17 @@ name: Build APK
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "principal" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "principal" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    env:
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      ANDROID_SDK_ROOT: /usr/local/lib/android/sdk
 
     steps:
     - name: Checkout code
@@ -45,3 +49,4 @@ jobs:
 
 env:
   ANDROID_HOME: /usr/local/lib/android/sdk
+        java-version
